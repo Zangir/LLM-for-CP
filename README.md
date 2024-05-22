@@ -2,7 +2,7 @@
 
 ### Implementation of the method - "Self-Guiding Exploration" from the paper "Self-Guiding Exploration for Combinatorial Problems"
 ### Required:
-    Python 3.9+
+    Python==3.9+
     numpy==1.26.4
     scipy==1.9.1
     google-generativeai==0.4.0
