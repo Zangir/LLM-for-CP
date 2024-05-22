@@ -7,7 +7,6 @@ def get_graph_mat(n=10, size=1):
     """ Throws n nodes uniformly at random on a square, and build a (fully connected) graph.
         Returns the (N, 2) coordinates matrix, and the (N, N) matrix containing pairwise euclidean distances.
     """
-    # TODO coords to args for all callbacks
     coords = size * np.random.randint(low = 0,high=n*10, size=(n,2))
     dist_mat = distance_matrix(coords, coords)
     dist_mat = [list(dist_mat[i].astype(int)) for i in range(len(dist_mat))]
