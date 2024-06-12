@@ -35,3 +35,31 @@ def SGE(Q, f):
     A = f.predict(current_prompt)
 
     return A
+
+def fast_SGE(Q, f):
+    z_explore = "List heuristic methods to solve this problem. Return only method names separated by new lines."
+    z_decomp = "List the steps to use this heuristic method. Return only the steps, separated by new lines."
+    z_action = "Apply the heuristic steps one by one."
+    z_feedback = "Give feedback to the proposed solution and improve the solution given feedback."
+    z_integrate = "Integrate all previous findings and return only the final solution as Python list of numbers."
+    sep = " "
+
+    final_thoughts = []
+    current_prompt = Q + sep + z_explore
+    Q_N = f.predict(current_prompt)
+    Q_N = separate_lines(Q_N)
+    print('Methods to solve: ', Q_N, '\n')
+    for n in range(2): # len(Q_N)
+        Q_n = Q_N[n]
+        current_prompt = Q + sep + Q_n + sep + z_decomp
+        Q_n_K = f.predict(current_prompt)
+        current_prompt = Q + sep + Q_n + sep + Q_n_K + sep + z_action
+        T_n_K = f.predict(current_prompt)
+        current_prompt = Q + sep + T_n_K + sep + z_feedback
+        T_n_K = f.predict(current_prompt)
+        final_thoughts.append(T_n_K)
+
+    current_prompt = Q + sep + sep.join(final_thoughts) + sep + z_integrate
+    A = f.predict(current_prompt)
+
+    return A

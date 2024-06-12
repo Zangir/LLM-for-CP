@@ -1,4 +1,5 @@
 import re
+import ast
 import os
 import google.generativeai as genai
 from openai import OpenAI
@@ -120,9 +121,43 @@ class llm_function():
 
         return out
 
-def get_cp_solution(out_pred):
-    solution = []
-    ints = re.findall(r'\d+', out_pred)
-    for elem in ints:
-        solution.append(int(elem)-1)
-    return solution
+def get_cp_solution(out_pred, task='vrp', size=4):
+    
+    try:
+        start_ind = out_pred.index('[')
+        end_ind = out_pred.index(']') + 1
+        out_pred = out_pred[start_ind:end_ind]
+        ast_out = ast.literal_eval(out_pred)
+    except:
+        ast_out = list(range(1, size+1))
+    final_out = []
+    for elem in ast_out:
+        if type(elem) == str:
+            elem = [int(x) for x in elem.split() if x.isnumeric()]
+            if len(elem) != 1:
+                continue
+            elem = elem[0]
+        if type(elem) != int:
+            continue
+        final_out.append(elem)
+    if len(final_out) == 0:
+        final_out = list(range(1, size+1))
+    if task == 'vrp' or task == 'tsp':
+        if final_out[0] != 0:
+            final_out = [0] + final_out
+        if final_out[-1] != 0:
+            final_out = final_out + [0]
+    return final_out
+
+def get_classical_solution(out_pred):
+    
+    try:
+        start_ind = out_pred.index('[')
+        end_ind = out_pred.index(']') + 1
+        out_pred = out_pred[start_ind:end_ind]
+        ast_out = ast.literal_eval(out_pred)
+    except:
+        ast_out = [None]
+    final_out = ast_out[-1]
+    
+    return final_out
