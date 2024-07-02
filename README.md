@@ -4,7 +4,8 @@ Official Implementation for the "Self-Guiding Exploration for Combinatorial Prob
     🌐 📃 <a href="https://arxiv.org/abs/2405.17950" target="_blank">Paper</a> <br>
 </p>
 
-**Authors**: [Zangir Iklassov](https://scholar.google.com/citations?user=SuLVY5oAAAAJ)<sup>[:email:️](mailto:zangir.iklassov@mbzuai.ac.ae)</sup>, Yali Du, Farkhad Akimov, [Martin Tak\'a\v{c}](https://mtakac.com/), 
+**Authors**: [Zangir Iklassov](https://scholar.google.com/citations?user=SuLVY5oAAAAJ)<sup>[:email:️](mailto:zangir.iklassov@mbzuai.ac.ae)</sup>, Yali Du, Farkhad Akimov, [Martin Takac](https://mtakac.com/), 
+
 *MBZUAI, United Arab Emirates*
 
 **Feel free to ask questions. If our work helps, please don't hesitate to give us a :star:!**
