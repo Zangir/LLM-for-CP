@@ -23,10 +23,15 @@ Official Implementation for the "Self-Guiding Exploration for Combinatorial Prob
     os
     time
 
-### TODO
+### Updates
 A new version of the algorithm has been added to main.py. 
+
+
 This version is more stable and robust, particularly for large instances of the Traveling Salesman Problem (TSP). 
+
 It now generates Python code for each solution trajectory, rather than relying solely on the LLM. 
+
+### TODO
 In future updates, other Combinatorial Problem (CP) tasks and Reasoning tasks will also be integrated into this version.
 
 ## Citation
